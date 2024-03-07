@@ -1,9 +1,8 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
 
 WORKDIR /app
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
-RUN python -m spacy download es_core_news_md
 EXPOSE 8080
 
 # uvicorn main:app --host 0.0.0.0 --port 8080

@@ -32,9 +32,9 @@ app.add_middleware(
 async def ocr_vision(
     api_key: str = Form(default='SB_XF456FNDKSF'),
     tipo_documento: str = Form(default='nota de un clausulado de un seguro'),
-    contexto: str = Form(default='eres un analista de seguros'), 
+    contexto: str = Form(default='Eres un analista de seguros.'), 
     instruccion: str = Form(default='Allí encontraras una tabla donde estan las coberturas y los topes de cada cobertura (montos de dinero en pesos colombianos). Extrae todos los valores, no ignores nada.'),
-    tags: str = Form(default='cobertura, valor_asegurado'),
+    tags: str = Form(default='es una cobertura (fila) y el valor es el texto del tope (valor asegurable, el intervalo que te indica el archivo)'),
     file: UploadFile = File(...)):
 
 
@@ -53,11 +53,11 @@ async def ocr_vision(
     # Prompt
     prompt = f"""
     Contexto: {contexto}
-    Recibiras la imagen de un documento de {tipo_documento}
+    Recibiras la imagen de {tipo_documento}
     Instrucción: {instruccion}
     No puedes inventar nada, solo puedes responder con lo que esta presente en la imagen, no asumas nada.
     Usa información unicamente de la(s) imagen(es) para el valor de cada tag.
-    Donde los tags del json son {tags}
+    Donde cada tag del json {tags}
     """
 
     # Procesar las imágenes y obtener la descripción del siniestro
