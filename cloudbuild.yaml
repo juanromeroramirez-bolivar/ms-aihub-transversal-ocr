@@ -41,7 +41,7 @@ steps:
         --image "$(cat image_name.txt)" \
         --region "$(cat region.txt)" \
         --platform managed\
-        --min-instances 1
+        --concurrency 1
 
 
 options:
