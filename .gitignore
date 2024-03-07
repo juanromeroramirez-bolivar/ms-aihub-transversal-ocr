@@ -1,0 +1,12 @@
+# Cache files, generates by Zephir
+.temp/
+.libs/
+.pkl/
+
+# omite variables de entorno
+.env
+
+# omite pycache
+**/__pycache__/
+
+.csv
